@@ -807,7 +807,7 @@ INSERT INTO hospital.atendente
 INSERT INTO hospital.atendente
 	VALUES(2,'Adriana','Silva','14/11/1995','23456789',1600);
 INSERT INTO hospital.atendente
-	VALUES(3,'Jaqueline','Santos','15/10/1990','34567890');
+	VALUES(3,'Jaqueline','Santos','15/10/1990','34567890',1574);
 
 -- Inserção de 8 diagnósticos
 
@@ -858,6 +858,9 @@ INSERT INTO hospital.agenda
 
 -- Inserção de 15 realizações de atendimento
 
+select * from hospital.RAatende;
+
+
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
 	VALUES(2,9,1);
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
@@ -875,22 +878,26 @@ INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
 	VALUES(1,9,8);
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
-	VALUES(1,17,NULL);
+	VALUES(1,9,NULL);
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
-	VALUES(1,18,NULL);
+	VALUES(1,14,NULL);
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
-	VALUES(2,19,NULL);
+	VALUES(2,15,NULL);
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
-	VALUES(3,20,NULL);
+	VALUES(3,11,NULL);
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
-	VALUES(2,21,NULL);
+	VALUES(2,2,NULL);
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
-	VALUES(3,22,NULL);
+	VALUES(3,8,NULL);
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
-	VALUES(3,23,NULL);
+	VALUES(3,10,NULL);
 	
 
--- Adição de novas colunas nas tabelas atendente, medico, paciente e acompanhante
+-- CONSULTAS
+
+
+
+
 
 SELECT * FROM hospital.cadastro;
 SELECT * FROM hospital.acompanhante;
