@@ -858,9 +858,6 @@ INSERT INTO hospital.agenda
 
 -- Inserção de 15 realizações de atendimento
 
-select * from hospital.RAatende;
-
-
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
 	VALUES(2,9,1);
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
@@ -914,15 +911,36 @@ FROM paciente as p INNER JOIN acompanhante as a
 	ON(p.id_acomp=a.id_acomp);
 
 -- Consulta 3:
--- Listar os médicos que possuem CRM (Conselho Regional de Medicina) ativo
+-- Listar os nomes, o id de registro e especialidade dos
+-- médicos que possuem CRM (Conselho Regional de Medicina) ativo
 
-SELECT *  
-from crm_validacao natural join medico
+SELECT m.id_registro, m.primeiro_nome, m.sobrenome, m.especialidade
+FROM crm_validacao as crm_va  NATURAL JOIN medico AS m
+WHERE crm_va.crmativo = true;
+
+-- Consulta 4:
+-- Listar o nome de todos pacientes cadastros que possuem letra inicial do primeiro
+-- nome a vogal "A"
+
+SELECT primeiro_nome
+FROM paciente
+WHERE primeiro_nome LIKE 'A%';
+
+-- Consulta 5
+-- Listar o valor máximo e mínimo dos salários dos médicos
+-- que possuem crm ativo agrupados por especialidade
+
+SELECT m.especialidade, max(salario) AS SalarioMaximo, min(salario) AS SalarioMinimo
+FROM medico as m NATURAL JOIN CRM_Validacao as crm
+WHERE crm.crmativo = true
+GROUP BY m.especialidade
 
 
 
-select * from paciente
-select * from acompanhante
+
+from cursa p natural join turma t
+group by mat_professor;
+
 
 
 
