@@ -895,6 +895,36 @@ INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
 
 -- CONSULTAS
 
+set search_path to hospital; 
+
+-- Consulta 1:
+-- Exibir o nome e id_registro de todos os médicos que possuem no hospital 
+-- onde sua especialidade é de Clínico geral
+
+SELECT id_registro, primeiro_nome, sobrenome
+FROM medico
+WHERE especialidade = 'Clínico Geral';
+
+-- Consulta 2:
+-- Listar o número de prontuário e nome de todos os pacientes que possuem um acompanhante
+-- associado.
+
+SELECT p.num_pront, p.primeiro_nome, p.sobrenome
+FROM paciente as p INNER JOIN acompanhante as a 
+	ON(p.id_acomp=a.id_acomp);
+
+-- Consulta 3:
+-- Listar os médicos que possuem CRM (Conselho Regional de Medicina) ativo
+
+SELECT *  
+from crm_validacao natural join medico
+
+
+
+select * from paciente
+select * from acompanhante
+
+
 
 
 
