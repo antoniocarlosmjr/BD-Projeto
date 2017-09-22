@@ -144,27 +144,24 @@ CREATE TABLE hospital.prescreve (
 -- Criação da tabela Exame
 
 CREATE DOMAIN TIPO_EXAME AS TEXT CHECK(
-	VALUE ~ 'Laboratorial' OR
-	VALUE ~ '
-	
-	
-
-CHECK(
-   VALUE ~ '^\d{5}$'
-OR VALUE ~ '^\d{5}-\d{4}$'
-);
-
-CREATE DOMAIN sal INT CHECK (VALUE > 2000 AND VALUE < 5000);
+	VALUE ~ 'Pressão Arterial' OR
+	VALUE ~ 'Hemograma' OR
+	VALUE ~ 'Colesterol' OR
+	VALUE ~ 'Biopsia' OR
+	VALUE ~ 'Gastrite erosiva' OR
+	VALUE ~ 'Endoscopia' OR
+	VALUE ~ 'Urografia');
 
 CREATE TABLE hospital.exame (
 	id_exame SERIAL,
 	resultado VARCHAR(45) NOT NULL,
 	medico VARCHAR(45) NOT NULL,
-	tipo VARCHAR(45) NOT NULL,
+	tipo TIPO_EXAME,
 	nome VARCHAR(45) NOT NULL,
 	paciente VARCHAR(45) NOT NULL,
 	PRIMARY KEY (id_exame)
 	);
+
 
 ALTER TABLE hospital.exame
   DROP COLUMN medico;
@@ -244,7 +241,7 @@ CREATE TABLE hospital.atendente (
 	sobrenome VARCHAR(45) NOT NULL,
 	data_nasc VARCHAR(45) NOT NULL,
 	tel_cel VARCHAR(45) NOT NULL,
-	salario INT NULL CHECK (salario > 0) DEFAULT 1500;
+	salario INT NULL CHECK (salario > 0) DEFAULT 1500,
 	PRIMARY KEY (id)
 );
 
@@ -554,7 +551,6 @@ INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pr
 
 
 -- Inserção de Consultas marcadas para cada cadastro
-select * from hospital.ConsultasMarcadas;
 
 INSERT INTO hospital.ConsultasMarcadas 
 	values(3,1);
@@ -688,21 +684,21 @@ INSERT INTO hospital.CRM_Validacao
 -- Inserção de 7 Médicos
 
 INSERT INTO hospital.medico
-	VALUES(1010,'João','Costa','23/05/1970','799456789',161616,'Clínico Geral');
+	VALUES(1010,'João','Costa','23/05/1970','799456789',161616,2500,'Clínico Geral');
 INSERT INTO hospital.medico
-	VALUES(1111,'Marcos','Silva','12/06/1960','739456789',151515,'Clínico Geral');
+	VALUES(1111,'Marcos','Silva','12/06/1960','739456789',151515,2500,'Clínico Geral');
 INSERT INTO hospital.medico
-	VALUES(1212,'José','Junior','10/01/1971','799426789',171717,'Clínico Geral');
+	VALUES(1212,'José','Junior','10/01/1971','799426789',171717,2500,'Clínico Geral');
 INSERT INTO hospital.medico
-	VALUES(1313,'Joelio','Brito','01/03/1955','779456789',252525,'Gastro');
+	VALUES(1313,'Joelio','Brito','01/03/1955','779456789',252525,2700,'Gastro');
 INSERT INTO hospital.medico
-	VALUES(1414,'Otávio','Martins','05/04/1960','789456789',202020,'Clínico Geral');
+	VALUES(1414,'Otávio','Martins','05/04/1960','789456789',202020,2500,'Clínico Geral');
 INSERT INTO hospital.medico
-	VALUES(1515,'Júlio','Silva','13/05/1969','899456789',181818,'Neurologista');
+	VALUES(1515,'Júlio','Silva','13/05/1969','899456789',181818,2700,'Neurologista');
 INSERT INTO hospital.medico
-	VALUES(1616,'Santos','Hemílio','09/09/1965','999456789',191919,'Clínico Geral');
+	VALUES(1616,'Santos','Hemílio','09/09/1965','999456789',191919,2500,'Clínico Geral');
 INSERT INTO hospital.medico
-	VALUES(1717,'Carlos','José','12/11/1988','499456789',202020,'Clínico Geral');
+	VALUES(1717,'Carlos','José','12/11/1988','499456789',202020,2500,'Clínico Geral');
 
 -- Inserção de 5 prescrições na tabela prescreve
 
@@ -720,21 +716,21 @@ INSERT INTO hospital.prescreve
 -- Inserção de 8 exames que foram realizados
 
 INSERT INTO hospital.exame
-	VALUES(1,'Negativo','Exame de pressão alta','Colesterol',1212,12);
+	VALUES(1,'Negativo','Hemograma','Colesterol',1212,12);
 INSERT INTO hospital.exame
-	values(2,'Negativo','Exame de sangue','HIV',1616,13);
+	values(2,'Negativo','Hemograma','HIV',1616,13);
 INSERT INTO hospital.exame
 	VALUES(3,'Positivo','Gastrite erosiva','Gastrite',1313,70);
 INSERT INTO hospital.exame
 	VALUES(4,'Negativo','Gastrite erosiva','Gastrite',1313,15);
 INSERT INTO hospital.exame
-	VALUES(5,'Negativo','Exame de sangue','HIV',1313,19);
+	VALUES(5,'Negativo','Hemograma','HIV',1313,19);
 INSERT INTO hospital.exame
-	VALUES(6,'Negativo','Exame de sangue','HPV',1313,19);
+	VALUES(6,'Negativo','Hemograma','HPV',1313,19);
 INSERT INTO hospital.exame
-	VALUES(7,'Negativo','Exame de sangue','Câncer',1616,26);
+	VALUES(7,'Negativo','Hemograma','Câncer',1616,26);
 INSERT INTO hospital.exame
-	VALUES(8,'Positivo','Exame de sangue','Gravidez',1414,19);
+	VALUES(8,'Positivo','Hemograma','Gravidez',1414,19);
 
 -- Inserção de 15 consultas na tabela consulta
 
@@ -809,7 +805,7 @@ INSERT INTO hospital.realiza(id_exame,id_consulta,id_registro)
 INSERT INTO hospital.atendente
 	VALUES(1,'Júlia','Nascimento','23/10/1978','12345678');
 INSERT INTO hospital.atendente
-	VALUES(2,'Adriana','Silva','14/11/1995','23456789');
+	VALUES(2,'Adriana','Silva','14/11/1995','23456789',1600);
 INSERT INTO hospital.atendente
 	VALUES(3,'Jaqueline','Santos','15/10/1990','34567890');
 
