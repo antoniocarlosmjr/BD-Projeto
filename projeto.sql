@@ -937,17 +937,23 @@ WHERE crm.crmativo = true
 GROUP BY m.especialidade
 
 -- Consulta 6
+<<<<<<< HEAD
 -- Exiba o nome de todos os pacientes que tem consultas marcadas com o Clínico Geral 
 
 SELECT COALESCE(P.primeiro_nome, 'SEM NOME')
 FROM (SELECT C.paciente FROM consulta AS C INNER JOIN medico AS M
 			ON C.medico = M.id_registro AND M.especialidade = 'Clínico Geral'
      ) AS dados LEFT JOIN paciente P ON dados.paciente = P.num_pront;
+=======
+-- Exiba o nome de todos os pacientes que tem consultas marcadas com o Neurologista no
+-- ano de 2017
+>>>>>>> 2ff3c0f84d12adf5fe2ef1f46eac021298c700f0
 
 -- Consulta 7 
 -- Liste todos os medicamentos prescritos pelos médicos que realizaram exames
 -- com diagnostico diferentes de nada a constar
 
+<<<<<<< HEAD
 SELECT med.nome, d.descricao
 FROM (SELECT *
 	FROM medicamento AS m NATURAL JOIN prescreve AS p) AS med
@@ -983,3 +989,46 @@ FROM (SELECT especialidade AS esp, avg(salario) AS MEDIA
       GROUP BY especialidade) AS dados JOIN medico as m1 ON (dados.esp=m1.especialidade)
 WHERE m1.salario >= dados.MEDIA
 ORDER BY m1.salario ASC;
+=======
+-- Consulta 8
+-- Liste todos as consultas agendadas para um professor e todos os medicamentos prescritos por ele
+-- organizados por ordem alfabetica
+
+-- Consulta 9
+-- Liste o nome e numero de prontuario de todos os pacientes que possuem consulta ou exames marcados
+-- mas que não tem nenhum acompanhante
+
+-- Consulta 10
+-- Listar o nome e sobrenome de todos os medicos que possuem salario superior a média
+-- salarial dos medicos no hospital
+
+
+
+
+from cursa p natural join turma t
+group by mat_professor;
+
+
+
+
+
+
+
+SELECT * FROM hospital.cadastro;
+SELECT * FROM hospital.acompanhante;
+SELECT * FROM hospital.paciente;
+SELECT * FROM hospital.ConsultasMarcadas;
+SELECT * FROM hospital.medicamento;
+SELECT * FROM hospital.possui;
+SELECT * FROM hospital.CRM_Validacao;
+SELECT * FROM hospital.medico;
+SELECT * FROM hospital.prescreve;
+SELECT * FROM hospital.exame;
+SELECT * FROM hospital.consulta;
+SELECT * FROM hospital.realiza;
+SELECT * FROM hospital.atendente;
+SELECT * FROM hospital.diagnostico; 
+SELECT * FROM hospital.gera;
+select * from hospital.agenda;
+select * from hospital.RAtende;
+>>>>>>> 2ff3c0f84d12adf5fe2ef1f46eac021298c700f0
