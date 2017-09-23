@@ -935,6 +935,26 @@ FROM medico as m NATURAL JOIN CRM_Validacao as crm
 WHERE crm.crmativo = true
 GROUP BY m.especialidade
 
+-- Consulta 6
+-- Exiba o nome de todos os pacientes que tem consultas marcadas com o Neurologista no
+-- ano de 2017
+
+-- Consulta 7 
+-- Liste todos os medicamentos prescritos pelos médicos que realizaram exames
+-- com diagnostico diferentes de nada a constar
+
+-- Consulta 8
+-- Liste todos as consultas agendadas para um professor e todos os medicamentos prescritos por ele
+-- organizados por ordem alfabetica
+
+-- Consulta 9
+-- Liste o nome e numero de prontuario de todos os pacientes que possuem consulta ou exames marcados
+-- mas que não tem nenhum acompanhante
+
+-- Consulta 10
+-- Listar o nome e sobrenome de todos os medicos que possuem salario superior a média
+-- salarial dos medicos no hospital
+
 
 
 
