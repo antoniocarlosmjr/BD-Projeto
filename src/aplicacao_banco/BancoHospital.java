@@ -95,7 +95,7 @@ public class BancoHospital {
 		            break;
 		    
 		    case 8:
-		    		//teste.consulta8(conexao); 
+		    		teste.consulta8(conexao); 
 		            break;
 		    
 		    case 9:
@@ -103,7 +103,7 @@ public class BancoHospital {
 		            break;
 	
 		    case 10:
-		    		//teste.consulta10(conexao);
+		    		teste.consulta10(conexao);
 		            break;
 		    
 		    default:
@@ -162,9 +162,9 @@ public void consulta2(Connection conexao) throws SQLException {
 }
 
 	public void consulta3(Connection conexao) throws SQLException {
-		String sql = "SELECT m.id_registro, m.primeiro_nome, m.sobrenome, m.especialidade"
-					+ " FROM hospital.CRM_Validacao as crm_va  NATURAL JOIN hospital.medico AS m"
-					+ "WHERE crm_va.crmativo = true";
+		String sql = "SELECT m.id_registro, m.primeiro_nome, m.sobrenome, m.especialidade\r\n" + 
+				"FROM hospital.crm_validacao as crm_va  NATURAL JOIN hospital.medico AS m\r\n" + 
+				"WHERE crm_va.crmativo = true";
 		Statement comando = conexao.createStatement();
 		System.out.println("Consulta 3: ");
 		
@@ -210,9 +210,10 @@ public void consulta2(Connection conexao) throws SQLException {
 	}
 	
 	public void consulta5(Connection conexao) throws SQLException {
-		String sql = "SELECT m.especialidade, max(salario) AS SalarioMaximo, min(salario) AS SalarioMinimo"
-				+ " FROM hospital.medico as m NATURAL JOIN hospital.CRM_Validacao as crm"
-				+ "WHERE crm.crmativo = true GROUP BY m.especialidade";
+		String sql = "SELECT m.especialidade, max(salario) AS SalarioMaximo, min(salario) AS SalarioMinimo\r\n" + 
+				"FROM hospital.medico as m NATURAL JOIN hospital.CRM_Validacao as crm\r\n" + 
+				"WHERE crm.crmativo = true\r\n" + 
+				"GROUP BY m.especialidade";
 		Statement comando = conexao.createStatement();
 		System.out.println("Consulta 5: ");
 		
@@ -341,12 +342,12 @@ public void consulta9(Connection conexao) throws SQLException {
 	comando.close();
 }
 public void consulta10(Connection conexao) throws SQLException {
-	String sql = "SELECT m1.primeiro_nome, m1.sobrenome, m1.especialidade"
-				+ "FROM (SELECT especialidade AS esp, avg(salario) AS MEDIA"
-				+ "FROM hospital.medico AS m"
-				+ "GROUP BY especialidade) AS dados JOIN hospital.medico as m1 "
-				+ "ON (dados.esp=m1.especialidade) WHERE m1.salario >= dados.MEDIA"
-				+ "ORDER BY m1.salario ASC;";
+	String sql = "SELECT m1.primeiro_nome, m1.sobrenome, m1.especialidade\r\n" + 
+			"FROM (SELECT especialidade AS esp, avg(salario) AS MEDIA\r\n" + 
+			"      FROM hospital.medico AS m\r\n" + 
+			"      GROUP BY especialidade) AS dados JOIN hospital.medico as m1 ON (dados.esp=m1.especialidade)\r\n" + 
+			"WHERE m1.salario >= dados.MEDIA\r\n" + 
+			"ORDER BY m1.salario ASC";
 	Statement comando = conexao.createStatement();
 	System.out.println("Consulta 10: ");
 	
