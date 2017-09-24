@@ -48,7 +48,7 @@ GROUP BY m.especialidade
 -- Consulta 6
 -- Exiba o nome de todos os pacientes que tem consultas marcadas com o Clínico Geral 
 
-SELECT COALESCE(P.primeiro_nome, 'SEM NOME')
+SELECT COALESCE(P.primeiro_nome, 'SEM NOME') AS nomes
 FROM (SELECT C.paciente FROM consulta AS C INNER JOIN medico AS M
 			ON C.medico = M.id_registro AND M.especialidade = 'Clínico Geral'
      ) AS dados LEFT JOIN paciente P ON dados.paciente = P.num_pront;
