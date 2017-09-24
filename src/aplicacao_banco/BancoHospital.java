@@ -175,6 +175,83 @@ public void consulta3(Connection conexao) throws SQLException {
 	for (int i = 1; i <= rsm.getColumnCount(); i++) {
 		System.out.print(rsm.getColumnName(i) + "\t\t");
 	}
+
+	public void consulta3(Connection conexao) throws SQLException {
+		String sql = "SELECT m.id_registro, m.primeiro_nome, m.sobrenome, m.especialidade"
+					+ " FROM hospital.crm_validacao as crm_va  NATURAL JOIN hospital.medico AS m"
+					+ "WHERE crm_va.crmativo = true";
+		Statement comando = conexao.createStatement();
+		System.out.println("Consulta 3: ");
+		
+		ResultSet resultado = comando.executeQuery(sql);
+		ResultSetMetaData rsm = resultado.getMetaData();
+		for (int i = 1; i <= rsm.getColumnCount(); i++) {
+			System.out.print(rsm.getColumnName(i) + "\t\t");
+			// rsm.getColumnTypeName(i)
+		}
+		
+		System.out.println();
+		
+		while (resultado.next()) {
+			for (int i = 1; i <= rsm.getColumnCount(); i++) {
+				String campo = resultado.getString(i);
+				System.out.print(campo + "\t\t\t");
+			}
+			System.out.println();
+		}
+		comando.close();
+	}
+	
+	public void consulta4(Connection conexao) throws SQLException {
+		String sql = "SELECT primeiro_nome FROM hospital.paciente WHERE primeiro_nome LIKE 'A%';";
+		Statement comando = conexao.createStatement();
+		System.out.println("Consulta 4: ");
+		
+		ResultSet resultado = comando.executeQuery(sql);
+		ResultSetMetaData rsm = resultado.getMetaData();
+		for (int i = 1; i <= rsm.getColumnCount(); i++) {
+			System.out.print(rsm.getColumnName(i) + "\t\t");
+			// rsm.getColumnTypeName(i)
+		}
+		
+		System.out.println();
+		
+		while (resultado.next()) {
+			for (int i = 1; i <= rsm.getColumnCount(); i++) {
+				String campo = resultado.getString(i);
+				System.out.print(campo + "\t\t\t");
+			}
+			System.out.println();
+		}
+		comando.close();
+	}
+	
+	public void consulta5(Connection conexao) throws SQLException {
+		String sql = "SELECT m.especialidade, max(salario) AS SalarioMaximo, min(salario) AS SalarioMinimo"
+				+ " FROM hospital.medico as m NATURAL JOIN hospital.CRM_Validacao as crm"
+				+ "WHERE crm.crmativo = true GROUP BY m.especialidade";
+		Statement comando = conexao.createStatement();
+		System.out.println("Consulta 5: ");
+		
+		ResultSet resultado = comando.executeQuery(sql);
+		ResultSetMetaData rsm = resultado.getMetaData();
+		for (int i = 1; i <= rsm.getColumnCount(); i++) {
+			System.out.print(rsm.getColumnName(i) + "\t\t");
+			// rsm.getColumnTypeName(i)
+		}
+		
+		System.out.println();
+		
+		while (resultado.next()) {
+			for (int i = 1; i <= rsm.getColumnCount(); i++) {
+				String campo = resultado.getString(i);
+				System.out.print(campo + "\t\t\t");
+			}
+			System.out.println();
+		}
+		comando.close();
+		}
+	
 	
 	System.out.println();
 	
