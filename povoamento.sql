@@ -571,4 +571,103 @@ INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
 	VALUES(3,8,NULL);
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
 	VALUES(3,10,NULL);
+<<<<<<< HEAD:projeto.sql
 	
+
+-- CONSULTAS
+
+set search_path to hospital; 
+
+-- Consulta 1:
+-- Exibir o nome e id_registro de todos os médicos que possuem no hospital 
+-- onde sua especialidade é de Clínico geral
+
+SELECT id_registro, primeiro_nome, sobrenome
+FROM medico
+WHERE especialidade = 'Clínico Geral';
+
+-- Consulta 2:
+-- Listar o número de prontuário e nome de todos os pacientes que possuem um acompanhante
+-- associado.
+
+SELECT p.num_pront, p.primeiro_nome, p.sobrenome
+FROM paciente as p INNER JOIN acompanhante as a 
+	ON(p.id_acomp=a.id_acomp);
+
+-- Consulta 3:
+-- Listar os nomes, o id de registro e especialidade dos
+-- médicos que possuem CRM (Conselho Regional de Medicina) ativo
+
+SELECT m.id_registro, m.primeiro_nome, m.sobrenome, m.especialidade
+FROM crm_validacao as crm_va  NATURAL JOIN medico AS m
+WHERE crm_va.crmativo = true;
+
+-- Consulta 4:
+-- Listar o nome de todos pacientes cadastros que possuem letra inicial do primeiro
+-- nome a vogal "A"
+
+SELECT primeiro_nome
+FROM paciente
+WHERE primeiro_nome LIKE 'A%';
+
+-- Consulta 5
+-- Listar o valor máximo e mínimo dos salários dos médicos
+-- que possuem crm ativo agrupados por especialidade
+
+SELECT m.especialidade, max(salario) AS SalarioMaximo, min(salario) AS SalarioMinimo
+FROM medico as m NATURAL JOIN CRM_Validacao as crm
+WHERE crm.crmativo = true
+GROUP BY m.especialidade
+
+-- Consulta 6
+-- Exiba o nome de todos os pacientes que tem consultas marcadas com o Neurologista no
+-- ano de 2017
+
+-- Consulta 7 
+-- Liste todos os medicamentos prescritos pelos médicos que realizaram exames
+-- com diagnostico diferentes de nada a constar
+
+-- Consulta 8
+-- Liste todos as consultas agendadas para um professor e todos os medicamentos prescritos por ele
+-- organizados por ordem alfabetica
+
+-- Consulta 9
+-- Liste o nome e numero de prontuario de todos os pacientes que possuem consulta ou exames marcados
+-- mas que não tem nenhum acompanhante
+
+-- Consulta 10
+-- Listar o nome e sobrenome de todos os medicos que possuem salario superior a média
+-- salarial dos medicos no hospital
+
+
+
+
+from cursa p natural join turma t
+group by mat_professor;
+
+
+
+
+
+
+
+SELECT * FROM hospital.cadastro;
+SELECT * FROM hospital.acompanhante;
+SELECT * FROM hospital.paciente;
+SELECT * FROM hospital.ConsultasMarcadas;
+SELECT * FROM hospital.medicamento;
+SELECT * FROM hospital.possui;
+SELECT * FROM hospital.CRM_Validacao;
+SELECT * FROM hospital.medico;
+SELECT * FROM hospital.prescreve;
+SELECT * FROM hospital.exame;
+SELECT * FROM hospital.consulta;
+SELECT * FROM hospital.realiza;
+SELECT * FROM hospital.atendente;
+SELECT * FROM hospital.diagnostico; 
+SELECT * FROM hospital.gera;
+select * from hospital.agenda;
+select * from hospital.RAtende;
+=======
+	
+>>>>>>> c317b10e1f4b1391207f7ec9317424d0a64bc5bc:povoamento.sql
