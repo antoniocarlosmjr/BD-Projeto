@@ -57,7 +57,7 @@ FROM (SELECT C.paciente FROM consulta AS C INNER JOIN medico AS M
 -- Liste todos os medicamentos prescritos pelos médicos que realizaram exames
 -- com diagnostico diferentes de nada a constar e mostre a descricao do diagnostico
 
-SELECT med.nome, d.descricao
+SELECT med.nome AS medicamento, d.descricao
 FROM (SELECT *
 	FROM medicamento AS m NATURAL JOIN prescreve AS p) AS med
 	JOIN medico AS me USING(id_registro)
