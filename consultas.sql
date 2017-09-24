@@ -92,4 +92,3 @@ FROM (SELECT especialidade AS esp, avg(salario) AS MEDIA
       GROUP BY especialidade) AS dados JOIN medico as m1 ON (dados.esp=m1.especialidade)
 WHERE m1.salario >= dados.MEDIA
 ORDER BY m1.salario ASC;
-
