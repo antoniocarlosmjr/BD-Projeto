@@ -1,13 +1,14 @@
+package aplicacao_banco;
+
 import java.sql.*;
 import java.util.Scanner;
 
-public class TesteJDBC {
+public class BancoHospital {
 
 	public static Connection conexao = null;
 	
-	public TesteJDBC() {
+	public BancoHospital() {
 		try {
-			// Carregar driver JDBC do postgress
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();
@@ -19,21 +20,16 @@ public class TesteJDBC {
 		String db = "postgres";
 		String url = "jdbc:postgresql://" + host + "/" + db;
 		String user = "postgres";
-		String senha = "1234";
+		String senha = "12345678";
 		conexao = DriverManager.getConnection(url, user, senha);
 		return conexao;
 	}
 
 public static void main(String[] args) throws SQLException {		
-				
-		
 		Scanner entrada = new Scanner(System.in);
 		BancoHospital teste = new BancoHospital();
 		teste.setConnection();
 		int opcao = 0;
-		
-		
-		
 		
 		System.out.println("——————————————————————————— SISTEMA +HOSPITAL——————————————————————————————————");
 		System.out.println("| - Digite o númmero da consulta desejada e em seguida pressione enter        |");
@@ -75,61 +71,51 @@ public static void main(String[] args) throws SQLException {
 			    		System.out.print (" Digite o número da consulta: ");
 			    		opcao= entrada.nextInt();
 			            break;
-			    
 			    case 2:
 			    		teste.consulta2(conexao);
 			    		System.out.print (" Digite o número da consulta: ");
 			    		opcao= entrada.nextInt();
 			            break;
-			    
 			    case 3:
 			    		teste.consulta3(conexao); 
 			    		System.out.print (" Digite o número da consulta: ");
 			    		opcao= entrada.nextInt();
 			            break;
-			    
 			    case 4:
 			    		teste.consulta4(conexao);
 			    		System.out.print (" Digite o número da consulta: ");
 			    		opcao= entrada.nextInt();
 			            break;
-	
 			    case 5:
 			    		teste.consulta5(conexao);
 			    		System.out.print (" Digite o número da consulta: ");
 			    		opcao= entrada.nextInt();
 			            break;
-	
 			    case 6:
 			    		teste.consulta6(conexao);
 			    		System.out.print (" Digite o número da consulta: ");
 			    		opcao= entrada.nextInt();
 			            break;
-		    
 			    case 7:
 			    		teste.consulta7(conexao);
 			    		System.out.print (" Digite o número da consulta: ");
 			    		opcao= entrada.nextInt();
 			            break;
-			    
 			    case 8:
 			    		teste.consulta8(conexao); 
 			    		System.out.print (" Digite o número da consulta: ");
 			    		opcao= entrada.nextInt();
 			            break;
-			    
 			    case 9:
 			    		teste.consulta9(conexao);
 			    		System.out.print (" Digite o número da consulta: ");
 			    		opcao= entrada.nextInt();
 			            break;
-		
 			    case 10:
 			    		teste.consulta10(conexao);
 			    		System.out.print (" Digite o número da consulta: ");
 			    		opcao= entrada.nextInt();
 			            break;
-			    
 			    default:
 			            System.out.println("Erro! Consulta Inválida");
 			            System.out.print (" Digite o número da consulta: ");
@@ -150,7 +136,6 @@ public void consulta1(Connection conexao) throws SQLException {
 		for (int i = 1; i <= rsm.getColumnCount(); i++) {
 			System.out.print(rsm.getColumnName(i) + "\t\t");
 		}
-		
 		System.out.println();
 		
 		while (resultado.next()) {
@@ -320,7 +305,6 @@ public void consulta8(Connection conexao) throws SQLException {
 	ResultSetMetaData rsm = resultado.getMetaData();
 	for (int i = 1; i <= rsm.getColumnCount(); i++) {
 		System.out.print(rsm.getColumnName(i) + "\t\t");
-		// rsm.getColumnTypeName(i)
 	}
 	
 	System.out.println();
@@ -373,7 +357,6 @@ public void consulta10(Connection conexao) throws SQLException {
 	ResultSetMetaData rsm = resultado.getMetaData();
 	for (int i = 1; i <= rsm.getColumnCount(); i++) {
 		System.out.print(rsm.getColumnName(i) + "\t\t");
-		// rsm.getColumnTypeName(i)
 	}
 	
 	System.out.println();
