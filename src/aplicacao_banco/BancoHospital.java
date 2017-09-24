@@ -31,7 +31,7 @@ public static void main(String[] args) throws SQLException {
 		teste.setConnection();
 		int opcao = 0;
 		
-		System.out.println("——————————————————————————— SISTEMA +HOSPITAL——————————————————————————————————");
+		System.out.println("--------------------------- SISTEMA +HOSPITAL ----------------------------------");
 		System.out.println("| - Digite o númmero da consulta desejada e em seguida pressione enter        |");
 		System.out.println("|	                                                                      |");
 		System.out.println("| (1) - Exibir o nome e id_registro de todos os médicos que estão no hospital |");
@@ -43,7 +43,7 @@ public static void main(String[] args) throws SQLException {
 		System.out.println("| (4) - Exibir o nome de todos os pacientes cadastrados que possuem letra     |");
 		System.out.println("|       inicial do primeiro nome a vogal 'A'.                                 |");
 		System.out.println("| (5) - Apresentar o valor máximo e o mínimo dos salários dos médicos que pos-|");
-		System.out.println("|       suem CRM ativo, onde os médicos estÃ£o agrupados por especialidade.   |");
+		System.out.println("|       suem CRM ativo, onde os médicos estão agrupados por especialidade.    |");
 		System.out.println("| (6) - Listar o nome de todos os pacientes que têm consultas marcadas com o  |");
 		System.out.println("|       Clínico Geral.                                                        |");
 		System.out.println("| (7) - Exibir todos os medicamentos prescritos pelos médicos que realizaram  |");
@@ -58,7 +58,7 @@ public static void main(String[] args) throws SQLException {
 		System.out.println("|        ordenados por ordem crescente de salário.                            |");
 		System.out.println("|                                                                             |");
 		System.out.println("|          -  Para fechar o programa digite 0 e pressione enter -             |");
-		System.out.println("———————————————————————————————————————————————————————————————————————————————");
+		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println();
 		System.out.print (" Número da consulta: ");
 		opcao= entrada.nextInt();
@@ -131,7 +131,7 @@ public void consulta1(Connection conexao) throws SQLException {
 		String sql = "SELECT id_registro, primeiro_nome, sobrenome "
 				   + "FROM hospital.medico WHERE especialidade = 'Clínico Geral'";
 		Statement comando = conexao.createStatement();
-		System.out.println("—————————————————————————————— Consulta 1 —————————————————————————————————————");		ResultSet resultado = comando.executeQuery(sql);
+		System.out.println("--------------------------- Consulta 1 ----------------------------------");		ResultSet resultado = comando.executeQuery(sql);
 		ResultSetMetaData rsm = resultado.getMetaData();
 		for (int i = 1; i <= rsm.getColumnCount(); i++) {
 			System.out.print(rsm.getColumnName(i) + "\t\t");
@@ -153,7 +153,7 @@ public void consulta2(Connection conexao) throws SQLException {
 			"FROM hospital.paciente as p INNER JOIN hospital.acompanhante as a \r\n" + 
 			"	ON(p.id_acomp=a.id_acomp)";
 	Statement comando = conexao.createStatement();
-	System.out.println("—————————————————————————————— Consulta 2 —————————————————————————————————————");
+	System.out.println("--------------------------- Consulta 2 ----------------------------------");
 	ResultSet resultado = comando.executeQuery(sql);
 	ResultSetMetaData rsm = resultado.getMetaData();
 	for (int i = 1; i <= rsm.getColumnCount(); i++) {
@@ -177,7 +177,7 @@ public void consulta2(Connection conexao) throws SQLException {
 				"FROM hospital.crm_validacao as crm_va  NATURAL JOIN hospital.medico AS m\r\n" + 
 				"WHERE crm_va.crmativo = true";
 		Statement comando = conexao.createStatement();
-		System.out.println("—————————————————————————————— Consulta 3 —————————————————————————————————————");		
+		System.out.println("--------------------------- Consulta 3 ----------------------------------");		
 		ResultSet resultado = comando.executeQuery(sql);
 		ResultSetMetaData rsm = resultado.getMetaData();
 		for (int i = 1; i <= rsm.getColumnCount(); i++) {
@@ -199,7 +199,7 @@ public void consulta2(Connection conexao) throws SQLException {
 	public void consulta4(Connection conexao) throws SQLException {
 		String sql = "SELECT primeiro_nome FROM hospital.paciente WHERE primeiro_nome LIKE 'A%';";
 		Statement comando = conexao.createStatement();
-		System.out.println("—————————————————————————————— Consulta 4 —————————————————————————————————————");		
+		System.out.println("--------------------------- Consulta 4 ----------------------------------");		
 		ResultSet resultado = comando.executeQuery(sql);
 		ResultSetMetaData rsm = resultado.getMetaData();
 		for (int i = 1; i <= rsm.getColumnCount(); i++) {
@@ -224,7 +224,7 @@ public void consulta2(Connection conexao) throws SQLException {
 				"WHERE crm.crmativo = true\r\n" + 
 				"GROUP BY m.especialidade";
 		Statement comando = conexao.createStatement();
-		System.out.println("—————————————————————————————— Consulta 5 —————————————————————————————————————");		
+		System.out.println("--------------------------- Consulta 5 ----------------------------------");		
 		ResultSet resultado = comando.executeQuery(sql);
 		ResultSetMetaData rsm = resultado.getMetaData();
 		for (int i = 1; i <= rsm.getColumnCount(); i++) {
@@ -249,7 +249,7 @@ public void consulta6(Connection conexao) throws SQLException {
 			"			ON C.medico = M.id_registro AND M.especialidade = 'Clínico Geral'\r\n" + 
 			"     ) AS dados LEFT JOIN hospital.paciente P ON dados.paciente = P.num_pront;";
 	Statement comando = conexao.createStatement();
-	System.out.println("—————————————————————————————— Consulta 6 —————————————————————————————————————");	
+	System.out.println("--------------------------- Consulta 6 ----------------------------------");	
 	ResultSet resultado = comando.executeQuery(sql);
 	ResultSetMetaData rsm = resultado.getMetaData();
 	for (int i = 1; i <= rsm.getColumnCount(); i++) {
@@ -277,7 +277,7 @@ public void consulta7(Connection conexao) throws SQLException {
 			"	JOIN hospital.exame AS ex ON(ex.medico=med.id_registro)\r\n" + 
 			"WHERE d.descricao <> 'Nada a constar'";
 	Statement comando = conexao.createStatement();
-	System.out.println("—————————————————————————————— Consulta 7 —————————————————————————————————————");	
+	System.out.println("--------------------------- Consulta 7 ----------------------------------");	
 	ResultSet resultado = comando.executeQuery(sql);
 	ResultSetMetaData rsm = resultado.getMetaData();
 	for (int i = 1; i <= rsm.getColumnCount(); i++) {
@@ -300,7 +300,7 @@ public void consulta8(Connection conexao) throws SQLException {
 	String sql = "SELECT especialidade, count(especialidade) FROM hospital.medico GROUP BY especialidade "
 			+ "HAVING especialidade <> 'Gastro'";
 	Statement comando = conexao.createStatement();
-	System.out.println("—————————————————————————————— Consulta 8 —————————————————————————————————————");	
+	System.out.println("--------------------------- Consulta 8 ----------------------------------");	
 	ResultSet resultado = comando.executeQuery(sql);
 	ResultSetMetaData rsm = resultado.getMetaData();
 	for (int i = 1; i <= rsm.getColumnCount(); i++) {
@@ -326,7 +326,7 @@ public void consulta9(Connection conexao) throws SQLException {
 			"	FROM hospital.cadastro as c\r\n" + 
 			"	WHERE c.data_cad BETWEEN '01-01-2015' AND '31-12-2015')";
 	Statement comando = conexao.createStatement();
-	System.out.println("—————————————————————————————— Consulta 9 —————————————————————————————————————");	
+	System.out.println("--------------------------- Consulta 9 ----------------------------------");	
 	ResultSet resultado = comando.executeQuery(sql);
 	ResultSetMetaData rsm = resultado.getMetaData();
 	for (int i = 1; i <= rsm.getColumnCount(); i++) {
@@ -352,7 +352,7 @@ public void consulta10(Connection conexao) throws SQLException {
 			"WHERE m1.salario >= dados.MEDIA\r\n" + 
 			"ORDER BY m1.salario ASC";
 	Statement comando = conexao.createStatement();
-	System.out.println("—————————————————————————————— Consulta 10 ————————————————————————————————————");	
+	System.out.println("--------------------------- Consulta 10 ----------------------------------");	
 	ResultSet resultado = comando.executeQuery(sql);
 	ResultSetMetaData rsm = resultado.getMetaData();
 	for (int i = 1; i <= rsm.getColumnCount(); i++) {
