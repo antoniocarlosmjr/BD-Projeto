@@ -129,7 +129,7 @@ INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pr
 INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pront,id_login,id_acomp,cartao_sus)
 	VALUES ('Steven','Jobs','23/04/1940','799990489136',21,10,10,10001);
 INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pront,id_login,id_acomp,cartao_sus)
-	VALUES ('Admilson','Ribamar','10/03/1950',NULL,22,11,11,11110);
+	VALUES ('Admir','Ribamar','10/03/1950',NULL,22,11,11,11110);
 INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pront,id_login,id_acomp,cartao_sus)
 	VALUES ('Hendrik','Silva','12/07/1955',NULL,23,12,12,11100);
 INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pront,id_login,id_acomp,cartao_sus)
@@ -143,11 +143,11 @@ INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pr
 INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pront,id_login,id_acomp,cartao_sus)
 	VALUES ('Maria','Santos','23/12/1961',NULL,28,17,17,22000);
 INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pront,id_login,id_acomp,cartao_sus)
-	VALUES ('Marisvaldo','Coelho','23/06/1961','45896312457',29,18,18,20000);
+	VALUES ('Mario','Coelho','23/06/1961','45896312457',29,18,18,20000);
 INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pront,id_login,id_acomp,cartao_sus)
 	VALUES ('Luana','Nascimento','04/11/1963',NULL,30,19,19,33330);
 INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pront,id_login,id_acomp,cartao_sus)
-	VALUES ('Priscila','Santana','06/08/1995',NULL,31,20,20,33300);
+	VALUES ('Paula','Santana','06/08/1995',NULL,31,20,20,33300);
 INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pront,id_login,id_acomp,cartao_sus)
 	VALUES ('Ythanna','Gomes','01/02/1915',NULL,32,21,14,33000);
 INSERT INTO hospital.paciente (primeiro_nome,sobrenome, data_nasc,tel_cel,num_pront,id_login,id_acomp,cartao_sus)
@@ -373,7 +373,7 @@ INSERT INTO hospital.medico
 INSERT INTO hospital.medico
 	VALUES(1212,'José','Junior','10/01/1971','799426789',171717,2500,'Clínico Geral');
 INSERT INTO hospital.medico
-	VALUES(1313,'Joelio','Brito','01/03/1955','779456789',252525,2700,'Gastro');
+	VALUES(1313,'Joelio','Brito','01/03/1955','779456789',252525,2700,'Gastrointestinal');
 INSERT INTO hospital.medico
 	VALUES(1414,'Otávio','Martins','05/04/1960','789456789',202020,2500,'Clínico Geral');
 INSERT INTO hospital.medico
