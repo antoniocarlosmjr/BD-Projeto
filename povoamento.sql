@@ -373,7 +373,7 @@ INSERT INTO hospital.medico
 INSERT INTO hospital.medico
 	VALUES(1212,'José','Junior','10/01/1971','799426789',171717,2500,'Clínico Geral');
 INSERT INTO hospital.medico
-	VALUES(1313,'Joelio','Brito','01/03/1955','779456789',252525,2700,'Gastrointestinal');
+	VALUES(1313,'Joelio','Brito','01/03/1955','779456789',252525,2700,'Gastrointest.');
 INSERT INTO hospital.medico
 	VALUES(1414,'Otávio','Martins','05/04/1960','789456789',202020,2500,'Clínico Geral');
 INSERT INTO hospital.medico
@@ -571,5 +571,3 @@ INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
 	VALUES(3,8,NULL);
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
 	VALUES(3,10,NULL);
-
-
