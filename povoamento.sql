@@ -571,3 +571,5 @@ INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
 	VALUES(3,8,NULL);
 INSERT INTO hospital.RAtende(id_atendente,id_consulta,id_exame)
 	VALUES(3,10,NULL);
+
+
