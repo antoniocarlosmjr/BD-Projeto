@@ -316,21 +316,32 @@ public void consulta9(Connection conexao) throws SQLException {
 	}
 	comando.close();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public void consulta10(Connection conexao) throws SQLException {
+	String sql = "SELECT m1.primeiro_nome, m1.sobrenome, m1.especialidade"
+				+ "FROM (SELECT especialidade AS esp, avg(salario) AS MEDIA"
+				+ "FROM hospital.medico AS m"
+				+ "GROUP BY especialidade) AS dados JOIN hospital.medico as m1 "
+				+ "ON (dados.esp=m1.especialidade) WHERE m1.salario >= dados.MEDIA"
+				+ "ORDER BY m1.salario ASC;";
+	Statement comando = conexao.createStatement();
+	System.out.println("Consulta 10: ");
+	
+	ResultSet resultado = comando.executeQuery(sql);
+	ResultSetMetaData rsm = resultado.getMetaData();
+	for (int i = 1; i <= rsm.getColumnCount(); i++) {
+		System.out.print(rsm.getColumnName(i) + "\t\t");
+		// rsm.getColumnTypeName(i)
+	}
+	
+	System.out.println();
+	
+	while (resultado.next()) {
+		for (int i = 1; i <= rsm.getColumnCount(); i++) {
+			String campo = resultado.getString(i);
+			System.out.print(campo + "\t\t\t");
+		}
+		System.out.println();
+	}
+	comando.close();
+	}
 }
